@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berlin Trip - April 8-13, 2026</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f0;
+            color: #2c2c2c;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+
+        header h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+            opacity: 0.85;
+        }
+
+        nav {
+            background: #1a1a2e;
+            text-align: center;
+            padding: 0.75rem 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        nav a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 0 0.5rem;
+            border: none;
+            padding: 0.25rem 0;
+        }
+
+        nav a:hover {
+            color: white;
+            border: none;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem 4rem;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin: 2.5rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e9c46a;
+            color: #1a1a2e;
+        }
+
+        .section-title:first-child {
+            margin-top: 0.5rem;
+        }
+
+        .day {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .day-header {
+            padding: 1rem 1.25rem;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .day-1 .day-header { background: #e63946; }
+        .day-2 .day-header { background: #457b9d; }
+        .day-3 .day-header { background: #2a9d8f; }
+        .day-4 .day-header { background: #e76f51; }
+        .day-5 .day-header { background: #6a4c93; }
+
+        .day-body {
+            padding: 1rem 1.25rem 1.25rem;
+        }
+
+        .block {
+            margin-bottom: 1.25rem;
+        }
+
+        .block:last-child {
+            margin-bottom: 0;
+        }
+
+        .block-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+            margin-bottom: 0.4rem;
+        }
+
+        .block ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .block li {
+            padding: 0.3rem 0;
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        .block li + li {
+            border-top: 1px solid #f0f0f0;
+        }
+
+        a {
+            color: #0f3460;
+            text-decoration: none;
+            border-bottom: 1px solid #ccd;
+        }
+
+        a:hover {
+            color: #e63946;
+            border-color: #e63946;
+        }
+
+        .map-link {
+            font-size: 0.75rem;
+            color: #e63946;
+            border: 1px solid #e63946;
+            border-radius: 4px;
+            padding: 0.1rem 0.4rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .map-link:hover {
+            background: #e63946;
+            color: white;
+            border-color: #e63946;
+        }
+
+        .meal {
+            background: #fafaf6;
+            border-left: 3px solid #e9c46a;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0 6px 6px 0;
+            margin: 0.4rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        .meal-info { flex: 1; }
+
+        .meal .meal-type {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #b08800;
+        }
+
+        .meal .meal-name {
+            font-weight: 600;
+        }
+
+        .optional {
+            border: 1px dashed #ccc;
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            margin-top: 0.5rem;
+            background: #fcfcfa;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        .optional-content { flex: 1; }
+
+        .optional-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #aaa;
+            margin-bottom: 0.25rem;
+        }
+
+        .museums {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            margin-bottom: 1.5rem;
+        }
+
+        .museums .day-header {
+            background: #264653;
+        }
+
+        .note {
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Restaurant options */
+        .resto-section {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            margin-bottom: 1.5rem;
+        }
+
+        .resto-section .day-header {
+            background: #b5838d;
+        }
+
+        .resto-section.lunch .day-header {
+            background: #6d6875;
+        }
+
+        .cuisine-group {
+            margin-bottom: 1rem;
+        }
+
+        .cuisine-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .cuisine-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #666;
+            margin-bottom: 0.3rem;
+        }
+
+        .cuisine-group ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .cuisine-group li {
+            padding: 0.35rem 0;
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        .cuisine-group li + li {
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .resto-links {
+            display: flex;
+            gap: 0.4rem;
+            flex-shrink: 0;
+        }
+
+        .web-link {
+            font-size: 0.7rem;
+            color: #457b9d;
+            border: 1px solid #457b9d;
+            border-radius: 4px;
+            padding: 0.1rem 0.4rem;
+            white-space: nowrap;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .web-link:hover {
+            background: #457b9d;
+            color: white;
+            border-color: #457b9d;
+        }
+
+        @media (max-width: 500px) {
+            header h1 { font-size: 1.8rem; }
+            .container { padding: 1rem 0.75rem 3rem; }
+            nav a { margin: 0 0.25rem; font-size: 0.7rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Berlin</h1>
+    <p>April 8 &ndash; 13, 2026</p>
+</header>
+
+<nav>
+    <a href="#itinerary">Itinerary</a>
+    <a href="#dinner-options">Dinner Options</a>
+    <a href="#lunch-options">Lunch Options</a>
+    <a href="#museums">Museums</a>
+</nav>
+
+<div class="container">
+
+    <h2 class="section-title" id="itinerary">Day-by-Day Itinerary</h2>
+
+    <!-- DAY 1 -->
+    <div class="day day-1">
+        <div class="day-header">April 9 &mdash; Arrival + Historic Centre</div>
+        <div class="day-body">
+            <div class="block">
+                <div class="block-label">Afternoon</div>
+                <ul>
+                    <li>
+                        <span>Brandenburg Gate</span>
+                        <a class="map-link" href="https://www.google.com/maps/search/Brandenburg+Gate+Berlin" target="_blank">Map</a>
+                    </li>
+                    <li>
+                        <span>Reichstag <span class="note">(if booked)</span></span>
+                        <a class="map-link" href="https://www.google.com/maps/search/Reichstag+Berlin" target="_blank">Map</a>
+                    </li>
+                    <li>
+                        <span>Memorial to the Murdered Jews of Europe</span>
+                        <a class="map-link" href="https://www.google.com/maps/search/Memorial+to+the+Murdered+Jews+of+Europe+Berlin" target="_blank">Map</a>
+                    </li>
+                    <li>
+                        <span><a href="https://www.topographie.de/en/" target="_blank">Topography of Terror</a> (WWII)</span>
+                        <a class="map-link" href="https://www.google.com/maps/search/Topography+of+Terror+Berlin" target="_blank">Map</a>
+                    </li>
+                    <li>
+                        <span>Hitler bunker site</span>
+                        <a class="map-link" href="https://www.google.com/maps/search/Hitler+bunker+site+Berlin" target="_blank">Map</a>
+                    </li>
+                    <li>
+                        <span>Potsdamer Platz</span>
+                        <a class="map-link" href="https://www.google.com/maps/search/Potsdamer+Platz+Berlin" target="_blank">Map</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="meal">
+                <div class="meal-info">
+                    <div class="meal-type">Lunch</div>
+                    <div class="meal-name">LIU Nudelhaus</div>
+                </div>
+                <a class="map-link" href="https://www.google.com/maps/search/LIU+Nudelhaus+Berlin" target="_blank">Map</a>
+            </div>
+            <div class="meal">
+                <div class="meal-info">
+                    <div class="meal-type">Dinner &middot; 20:45</div>
+                    <div class="meal-name"><a href="https://www.trio-restaurant.de/" target="_blank">Trio</a></div>
+                </div>
+                <a class="map-link" href="https://www.google.com/maps/search/Trio+Restaurant+Berlin" target="_blank">Map</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- DAY 2 -->
+    <div class="day day-2">
+        <div class="day-header">April 10 &mdash; Sachsenhausen + Easy Evening</div>
+        <div class="day-body">
+            <div class="block">
+                <div class="block-label">Morning to Early Afternoon</div>
+                <ul>
+                    <li>
+                        <span>Sachsenhausen Concentration Camp <span class="note">(half day)</span></span>
+                        <a class="map-link" href="https://www.google.com/maps/search/Sachsenhausen+Concentration+Camp" target="_blank">Map</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="block">
+                <div class="block-label">Afternoon</div>
+                <ul>
+                    <li>
+                        <span>Hackescher Markt</span>
+                        <a class="map-link" href="https://www.google.com/maps/search/Hackescher+Markt+Berlin" target="_blank">Map</a>
+                    </li>
+                    <li>
+                        <span>or Prenzlauer Berg</span>
+                        <a class="map-link" href="https://www.google.com/maps/search/Prenzlauer+Berg+Berlin" target="_blank">Map</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="meal">
+                <div class="meal-info">
+                    <div class="meal-type">Dinner &middot; 21:00</div>
+                    <div class="meal-name"><a href="https://www.november-brasserie.de/" target="_blank">November Brasserie</a></div>
+                </div>
+                <a class="map-link" href="https://www.google.com/maps/search/November+Brasserie+Berlin" target="_blank">Map</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- DAY 3 -->
+    <div class="day day-3">
+        <div class="day-header">April 11 &mdash; Cold War Berlin + Mauerpark</div>
+        <div class="day-body">
+            <div class="block">
+                <div class="block-label">Morning</div>
+                <ul>
+                    <li>
+                        <span>Berlin Wall Memorial</span>
+                        <a class="map-link" href="https://www.google.com/maps/search/Berlin+Wall+Memorial" target="_blank">Map</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="block">
+                <div class="block-label">Walk / Chill</div>
+                <ul>
+                    <li>
+                        <span>Mauerpark</span>
+                        <a class="map-link" href="https://www.google.com/maps/search/Mauerpark+Berlin" target="_blank">Map</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="meal">
+                <div class="meal-info">
+                    <div class="meal-type">Lunch</div>
+                    <div class="meal-name">R&uuml;yam Gem&uuml;se Kebab</div>
+                </div>
+                <a class="map-link" href="https://www.google.com/maps/search/R%C3%BCyam+Gem%C3%BCse+Kebab+Berlin" target="_blank">Map</a>
+            </div>
+            <div class="block">
+                <div class="block-label">Afternoon</div>
+                <ul>
+                    <li>
+                        <span>Checkpoint Charlie</span>
+                        <a class="map-link" href="https://www.google.com/maps/search/Checkpoint+Charlie+Berlin" target="_blank">Map</a>
+                    </li>
+                    <li>
+                        <span>Tr&auml;nenpalast</span>
+                        <a class="map-link" href="https://www.google.com/maps/search/Tr%C3%A4nenpalast+Berlin" target="_blank">Map</a>
+                    </li>
+                    <li>
+                        <span>East Side Gallery</span>
+                        <a class="map-link" href="https://www.google.com/maps/search/East+Side+Gallery+Berlin" target="_blank">Map</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="meal">
+                <div class="meal-info">
+                    <div class="meal-type">Dinner &middot; 19:30</div>
+                    <div class="meal-name"><a href="https://www.rocoto-berlin.de/" target="_blank">Rocoto</a></div>
+                </div>
+                <a class="map-link" href="https://www.google.com/maps/search/Rocoto+Berlin" target="_blank">Map</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- DAY 4 -->
+    <div class="day day-4">
+        <div class="day-header">April 12 &mdash; Bunker Tour + Kin Za + Chill</div>
+        <div class="day-body">
+            <div class="block">
+                <div class="block-label">Morning / Early Afternoon</div>
+                <ul>
+                    <li>
+                        <span><a href="https://www.berliner-unterwelten.de/en/" target="_blank">Berliner Unterwelten tour</a> &mdash; Dark Worlds recommended</span>
+                        <a class="map-link" href="https://www.google.com/maps/search/Berliner+Unterwelten+Berlin" target="_blank">Map</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="meal">
+                <div class="meal-info">
+                    <div class="meal-type">Lunch</div>
+                    <div class="meal-name"><a href="https://kinza.berlin" target="_blank">Kin Za Georgian Kitchen Cafe</a></div>
+                </div>
+                <a class="map-link" href="https://www.google.com/maps/search/Kin+Za+Georgian+Kitchen+Berlin" target="_blank">Map</a>
+            </div>
+            <div class="optional">
+                <div class="optional-content">
+                    <div class="optional-label">Optional</div>
+                    <a href="https://www.berlinstory.de/en/" target="_blank">Berlin Story Bunker</a>
+                </div>
+                <a class="map-link" href="https://www.google.com/maps/search/Berlin+Story+Bunker" target="_blank">Map</a>
+            </div>
+            <div class="block" style="margin-top: 1rem;">
+                <div class="block-label">Afternoon Options</div>
+                <ul>
+                    <li>
+                        <span>Tempelhofer Feld <span class="note">(sunset is best)</span></span>
+                        <a class="map-link" href="https://www.google.com/maps/search/Tempelhofer+Feld+Berlin" target="_blank">Map</a>
+                    </li>
+                    <li>
+                        <span>Kreuzberg / Neuk&ouml;lln</span>
+                        <a class="map-link" href="https://www.google.com/maps/search/Kreuzberg+Berlin" target="_blank">Map</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="meal">
+                <div class="meal-info">
+                    <div class="meal-type">Dinner &middot; 18:00&ndash;19:45</div>
+                    <div class="meal-name"><a href="https://paolopinkel.de/" target="_blank">Paolo Pinkel</a></div>
+                </div>
+                <a class="map-link" href="https://www.google.com/maps/search/Paolo+Pinkel+Berlin" target="_blank">Map</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- DAY 5 -->
+    <div class="day day-5">
+        <div class="day-header">April 13 &mdash; Slow Morning + Palace</div>
+        <div class="day-body">
+            <div class="block">
+                <div class="block-label">Morning</div>
+                <ul>
+                    <li>
+                        <span>Charlottenburg Palace + gardens</span>
+                        <a class="map-link" href="https://www.google.com/maps/search/Charlottenburg+Palace+Berlin" target="_blank">Map</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="optional">
+                <div class="optional-content">
+                    <div class="optional-label">If time allows</div>
+                    Karl-Marx-Allee or a quick museum
+                </div>
+                <a class="map-link" href="https://www.google.com/maps/search/Karl-Marx-Allee+Berlin" target="_blank">Map</a>
+            </div>
+            <div class="block" style="margin-top: 1rem;">
+                <div class="block-label">Departure</div>
+                <ul>
+                    <li><span>Leave at 17:00</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- DINNER OPTIONS -->
+    <h2 class="section-title" id="dinner-options">Dinner Options</h2>
+
+    <div class="resto-section">
+        <div class="day-header">Restaurants We're Considering</div>
+        <div class="day-body">
+
+            <div class="cuisine-group">
+                <div class="cuisine-label">Italian</div>
+                <ul>
+                    <li>
+                        <span>Cocodrillo</span>
+                        <div class="resto-links">
+                            <a class="web-link" href="https://cocodrillo-berlin.com" target="_blank">Web</a>
+                            <a class="map-link" href="https://www.google.com/maps/search/Cocodrillo+Berlin" target="_blank">Map</a>
+                        </div>
+                    </li>
+                    <li>
+                        <span>Lupa</span>
+                        <div class="resto-links">
+                            <a class="web-link" href="https://www.lupa.berlin" target="_blank">Web</a>
+                            <a class="map-link" href="https://www.google.com/maps/search/Lupa+Restaurant+Berlin" target="_blank">Map</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="cuisine-group">
+                <div class="cuisine-label">Latin American / Spanish-influenced</div>
+                <ul>
+                    <li>
+                        <span>Ita Bistro</span>
+                        <div class="resto-links">
+                            <a class="web-link" href="https://www.itabistro.com" target="_blank">Web</a>
+                            <a class="map-link" href="https://www.google.com/maps/search/Ita+Bistro+Berlin" target="_blank">Map</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="cuisine-group">
+                <div class="cuisine-label">Georgian</div>
+                <ul>
+                    <li>
+                        <span>Kin Za</span>
+                        <div class="resto-links">
+                            <a class="web-link" href="https://kinza.berlin" target="_blank">Web</a>
+                            <a class="map-link" href="https://www.google.com/maps/search/Kin+Za+Georgian+Kitchen+Berlin" target="_blank">Map</a>
+                        </div>
+                    </li>
+                    <li>
+                        <span>Der blaue Fuchs <span class="note">(Prenzlauer Berg)</span></span>
+                        <div class="resto-links">
+                            <a class="web-link" href="https://derblauefuchs.com/" target="_blank">Web</a>
+                            <a class="map-link" href="https://www.google.com/maps/search/Der+blaue+Fuchs+Prenzlauer+Berg+Berlin" target="_blank">Map</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="cuisine-group">
+                <div class="cuisine-label">Asian (Japanese / Ramen)</div>
+                <ul>
+                    <li>
+                        <span>Buya Ramen</span>
+                        <div class="resto-links">
+                            <a class="web-link" href="https://www.instagram.com/buya.ramen" target="_blank">IG</a>
+                            <a class="map-link" href="https://www.google.com/maps/search/Buya+Ramen+Berlin" target="_blank">Map</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="cuisine-group">
+                <div class="cuisine-label">Modern European / Contemporary Berlin</div>
+                <ul>
+                    <li>
+                        <span>Barra</span>
+                        <div class="resto-links">
+                            <a class="web-link" href="https://www.barraberlin.com" target="_blank">Web</a>
+                            <a class="map-link" href="https://www.google.com/maps/search/Barra+Restaurant+Berlin" target="_blank">Map</a>
+                        </div>
+                    </li>
+                    <li>
+                        <span>Otto</span>
+                        <div class="resto-links">
+                            <a class="web-link" href="https://www.otto-berlin.net" target="_blank">Web</a>
+                            <a class="map-link" href="https://www.google.com/maps/search/Otto+Restaurant+Berlin" target="_blank">Map</a>
+                        </div>
+                    </li>
+                    <li>
+                        <span>Eins44</span>
+                        <div class="resto-links">
+                            <a class="web-link" href="https://www.eins44.com" target="_blank">Web</a>
+                            <a class="map-link" href="https://www.google.com/maps/search/Eins44+Berlin" target="_blank">Map</a>
+                        </div>
+                    </li>
+                    <li>
+                        <span>Hallmann &amp; Klee</span>
+                        <div class="resto-links">
+                            <a class="web-link" href="https://www.hallmannundklee.de" target="_blank">Web</a>
+                            <a class="map-link" href="https://www.google.com/maps/search/Hallmann+und+Klee+Berlin" target="_blank">Map</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="cuisine-group">
+                <div class="cuisine-label">Fun / Dinner + Drinks</div>
+                <ul>
+                    <li>
+                        <span>ORA</span>
+                        <div class="resto-links">
+                            <a class="web-link" href="https://www.oraberlin.de" target="_blank">Web</a>
+                            <a class="map-link" href="https://www.google.com/maps/search/ORA+Berlin+Restaurant" target="_blank">Map</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- LUNCH OPTIONS -->
+    <h2 class="section-title" id="lunch-options">Lunch Options</h2>
+
+    <div class="resto-section lunch">
+        <div class="day-header">Spots for Lunch</div>
+        <div class="day-body">
+
+            <div class="cuisine-group">
+                <div class="cuisine-label">Italian</div>
+                <ul>
+                    <li>
+                        <span>Lavanderia Vecchia</span>
+                        <div class="resto-links">
+                            <a class="web-link" href="https://www.lavanderiavecchia.de" target="_blank">Web</a>
+                            <a class="map-link" href="https://www.google.com/maps/search/Lavanderia+Vecchia+Berlin" target="_blank">Map</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="cuisine-group">
+                <div class="cuisine-label">Middle Eastern / Israeli</div>
+                <ul>
+                    <li>
+                        <span>Golda Deluxe</span>
+                        <div class="resto-links">
+                            <a class="web-link" href="https://www.instagram.com/golda.deluxe" target="_blank">IG</a>
+                            <a class="map-link" href="https://www.google.com/maps/search/Golda+Deluxe+Berlin" target="_blank">Map</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="cuisine-group">
+                <div class="cuisine-label">Mexican / Latin Street Food</div>
+                <ul>
+                    <li>
+                        <span>Tacos El Rey</span>
+                        <div class="resto-links">
+                            <a class="web-link" href="https://www.instagram.com/tacoselrey.berlin" target="_blank">IG</a>
+                            <a class="map-link" href="https://www.google.com/maps/search/Tacos+El+Rey+Berlin" target="_blank">Map</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="cuisine-group">
+                <div class="cuisine-label">Southeast Asian</div>
+                <ul>
+                    <li>
+                        <span>Ma-Makan</span>
+                        <div class="resto-links">
+                            <a class="web-link" href="https://www.mamakanberlin.com" target="_blank">Web</a>
+                            <a class="map-link" href="https://www.google.com/maps/search/Ma+Makan+Berlin" target="_blank">Map</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="cuisine-group">
+                <div class="cuisine-label">Taiwanese / Asian Street Food</div>
+                <ul>
+                    <li>
+                        <span>Lon Men's Noodle House</span>
+                        <div class="resto-links">
+                            <a class="web-link" href="https://lonmen.eatbu.com" target="_blank">Web</a>
+                            <a class="map-link" href="https://www.google.com/maps/search/Lon+Men+Noodle+House+Berlin" target="_blank">Map</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="cuisine-group">
+                <div class="cuisine-label">Brunch / Berlin Casual</div>
+                <ul>
+                    <li>
+                        <span>Ari's <span class="note">(Kreuzberg)</span></span>
+                        <div class="resto-links">
+                            <a class="web-link" href="https://www.arisberlin.com" target="_blank">Web</a>
+                            <a class="map-link" href="https://www.google.com/maps/search/Aris+Kreuzberg+Berlin" target="_blank">Map</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="cuisine-group">
+                <div class="cuisine-label">Turkish / Berlin Street Food</div>
+                <ul>
+                    <li>
+                        <span>R&uuml;yam Gem&uuml;se Kebab</span>
+                        <div class="resto-links">
+                            <a class="web-link" href="https://www.instagram.com/rueyam_gemuesekebab" target="_blank">IG</a>
+                            <a class="map-link" href="https://www.google.com/maps/search/R%C3%BCyam+Gem%C3%BCse+Kebab+Berlin" target="_blank">Map</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- OPTIONAL MUSEUMS -->
+    <h2 class="section-title" id="museums">Optional Museums</h2>
+
+    <div class="museums">
+        <div class="day-header">If We Have Time</div>
+        <div class="day-body">
+            <div class="block">
+                <ul>
+                    <li>
+                        <span><a href="https://www.dhm.de/en/" target="_blank">German Historical Museum</a></span>
+                        <a class="map-link" href="https://www.google.com/maps/search/German+Historical+Museum+Berlin" target="_blank">Map</a>
+                    </li>
+                    <li>
+                        <span><a href="https://www.ddr-museum.de/en" target="_blank">DDR Museum</a></span>
+                        <a class="map-link" href="https://www.google.com/maps/search/DDR+Museum+Berlin" target="_blank">Map</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
