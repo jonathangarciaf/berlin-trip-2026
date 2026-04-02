@@ -197,7 +197,7 @@
             border-radius: 8px;
             padding: 0.75rem 1rem;
             margin-top: 0.5rem;
-            background: #fcfcfa;
+            background: #f3f2ed;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -304,6 +304,61 @@
             border-color: #457b9d;
         }
 
+        .est-time {
+            font-size: 0.7rem;
+            color: #999;
+            margin-top: 0.1rem;
+        }
+
+        .desc {
+            font-size: 0.75rem;
+            color: #888;
+            font-style: italic;
+            margin-top: 0.1rem;
+        }
+
+        .optional-badge {
+            display: inline-block;
+            font-size: 0.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: #e0ddd5;
+            color: #888;
+            padding: 0.1rem 0.45rem;
+            border-radius: 10px;
+            margin-right: 0.4rem;
+            vertical-align: middle;
+        }
+
+        .full-route {
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: opacity 0.15s;
+        }
+
+        .full-route:hover {
+            opacity: 0.85;
+            color: white;
+            border: none;
+        }
+
+        .day-1 .full-route { background: #e63946; }
+        .day-2 .full-route { background: #457b9d; }
+        .day-3 .full-route { background: #2a9d8f; }
+        .day-4 .full-route { background: #e76f51; }
+        .day-5 .full-route { background: #6a4c93; }
+
         @media (max-width: 500px) {
             header h1 { font-size: 1.8rem; }
             .container { padding: 1rem 0.75rem 3rem; }
@@ -337,27 +392,64 @@
                 <div class="block-label">Afternoon</div>
                 <ul>
                     <li>
-                        <span>Brandenburg Gate</span>
+                        <div>
+                            <span>Brandenburg Gate</span>
+                            <div class="desc">Iconic 18th-century neoclassical city gate</div>
+                            <div class="est-time">~30 min</div>
+                        </div>
                         <a class="map-link" href="https://www.google.com/maps/search/Brandenburg+Gate+Berlin" target="_blank">Map</a>
                     </li>
                     <li>
-                        <span>Reichstag <span class="note">(if booked)</span></span>
+                        <div>
+                            <span>Reichstag Dome <span class="note">(booking required)</span></span>
+                            <div class="est-time">~1.5 hrs</div>
+                        </div>
                         <a class="map-link" href="https://www.google.com/maps/search/Reichstag+Berlin" target="_blank">Map</a>
                     </li>
                     <li>
-                        <span>Memorial to the Murdered Jews of Europe</span>
+                        <div>
+                            <span>Memorial to the Murdered Jews of Europe</span>
+                            <div class="desc">2,711 concrete stelae Holocaust memorial</div>
+                            <div class="est-time">~45 min</div>
+                        </div>
                         <a class="map-link" href="https://www.google.com/maps/search/Memorial+to+the+Murdered+Jews+of+Europe+Berlin" target="_blank">Map</a>
                     </li>
                     <li>
-                        <span><a href="https://www.topographie.de/en/" target="_blank">Topography of Terror</a> (WWII)</span>
+                        <div>
+                            <span><a href="https://www.topographie.de/en/" target="_blank">Topography of Terror</a> (WWII)</span>
+                            <div class="desc">SS &amp; Gestapo headquarters documentation centre</div>
+                            <div class="est-time">~1.5 hrs</div>
+                        </div>
                         <a class="map-link" href="https://www.google.com/maps/search/Topography+of+Terror+Berlin" target="_blank">Map</a>
                     </li>
                     <li>
-                        <span>Hitler bunker site</span>
+                        <div>
+                            <span>Gendarmenmarkt</span>
+                            <div class="desc">Berlin's most elegant square</div>
+                            <div class="est-time">~20 min</div>
+                        </div>
+                        <a class="map-link" href="https://www.google.com/maps/search/Gendarmenmarkt+Berlin" target="_blank">Map</a>
+                    </li>
+                    <li>
+                        <div>
+                            <span>Berlin Wall segment (Niederkirchnestra&szlig;e)</span>
+                            <div class="desc">Original Wall remnant at former Gestapo site</div>
+                            <div class="est-time">~15 min</div>
+                        </div>
+                        <a class="map-link" href="https://www.google.com/maps/search/Niederkirchnerstra%C3%9Fe+Berlin+Wall" target="_blank">Map</a>
+                    </li>
+                    <li>
+                        <div>
+                            <span>F&uuml;hrerbunker (Hitler bunker site)</span>
+                            <div class="est-time">~15 min</div>
+                        </div>
                         <a class="map-link" href="https://www.google.com/maps/search/Hitler+bunker+site+Berlin" target="_blank">Map</a>
                     </li>
                     <li>
-                        <span>Potsdamer Platz</span>
+                        <div>
+                            <span>Potsdamer Platz</span>
+                            <div class="est-time">~20 min</div>
+                        </div>
                         <a class="map-link" href="https://www.google.com/maps/search/Potsdamer+Platz+Berlin" target="_blank">Map</a>
                     </li>
                 </ul>
@@ -376,6 +468,7 @@
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/search/Trio+Restaurant+Berlin" target="_blank">Map</a>
             </div>
+            <a class="full-route" href="https://www.google.com/maps/dir/Brandenburg+Gate+Berlin/Reichstag+Berlin/Memorial+to+the+Murdered+Jews+of+Europe+Berlin/Topography+of+Terror+Berlin/Gendarmenmarkt+Berlin/Niederkirchnerstra%C3%9Fe+Berlin/F%C3%BChrerbunker+Berlin/Potsdamer+Platz+Berlin" target="_blank">Open full route in Google Maps</a>
         </div>
     </div>
 
@@ -387,7 +480,11 @@
                 <div class="block-label">Morning to Early Afternoon</div>
                 <ul>
                     <li>
-                        <span>Sachsenhausen Concentration Camp <span class="note">(half day)</span></span>
+                        <div>
+                            <span>Sachsenhausen Concentration Camp <span class="note">(half day)</span></span>
+                            <div class="desc">Nazi concentration camp, now memorial &amp; museum</div>
+                            <div class="est-time">~4 hrs</div>
+                        </div>
                         <a class="map-link" href="https://www.google.com/maps/search/Sachsenhausen+Concentration+Camp" target="_blank">Map</a>
                     </li>
                 </ul>
@@ -396,11 +493,17 @@
                 <div class="block-label">Afternoon</div>
                 <ul>
                     <li>
-                        <span>Hackescher Markt</span>
+                        <div>
+                            <span>Hackescher Markt</span>
+                            <div class="est-time">~1.5 hrs</div>
+                        </div>
                         <a class="map-link" href="https://www.google.com/maps/search/Hackescher+Markt+Berlin" target="_blank">Map</a>
                     </li>
                     <li>
-                        <span>or Prenzlauer Berg</span>
+                        <div>
+                            <span>or Prenzlauer Berg</span>
+                            <div class="est-time">~1.5 hrs</div>
+                        </div>
                         <a class="map-link" href="https://www.google.com/maps/search/Prenzlauer+Berg+Berlin" target="_blank">Map</a>
                     </li>
                 </ul>
@@ -412,6 +515,7 @@
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/search/November+Brasserie+Berlin" target="_blank">Map</a>
             </div>
+            <a class="full-route" href="https://www.google.com/maps/dir/Sachsenhausen+Concentration+Camp/Hackescher+Markt+Berlin" target="_blank">Open full route in Google Maps</a>
         </div>
     </div>
 
@@ -423,7 +527,11 @@
                 <div class="block-label">Morning</div>
                 <ul>
                     <li>
-                        <span>Berlin Wall Memorial</span>
+                        <div>
+                            <span>Berlin Wall Memorial</span>
+                            <div class="desc">Preserved Wall strip with watchtower</div>
+                            <div class="est-time">~1.5 hrs</div>
+                        </div>
                         <a class="map-link" href="https://www.google.com/maps/search/Berlin+Wall+Memorial" target="_blank">Map</a>
                     </li>
                 </ul>
@@ -432,8 +540,19 @@
                 <div class="block-label">Walk / Chill</div>
                 <ul>
                     <li>
-                        <span>Mauerpark</span>
+                        <div>
+                            <span>Mauerpark</span>
+                            <div class="est-time">~45 min</div>
+                        </div>
                         <a class="map-link" href="https://www.google.com/maps/search/Mauerpark+Berlin" target="_blank">Map</a>
+                    </li>
+                    <li>
+                        <div>
+                            <span>Bornholmer Stra&szlig;e</span>
+                            <div class="desc">First crossing opened on Nov 9, 1989</div>
+                            <div class="est-time">~20 min</div>
+                        </div>
+                        <a class="map-link" href="https://www.google.com/maps/search/Bornholmer+Stra%C3%9Fe+Bridge+Berlin" target="_blank">Map</a>
                     </li>
                 </ul>
             </div>
@@ -448,16 +567,28 @@
                 <div class="block-label">Afternoon</div>
                 <ul>
                     <li>
-                        <span>Checkpoint Charlie</span>
+                        <div>
+                            <span>East Side Gallery</span>
+                            <div class="desc">1.3 km of murals on remaining Wall</div>
+                            <div class="est-time">~45 min</div>
+                        </div>
+                        <a class="map-link" href="https://www.google.com/maps/search/East+Side+Gallery+Berlin" target="_blank">Map</a>
+                    </li>
+                    <li>
+                        <div>
+                            <span>Checkpoint Charlie</span>
+                            <div class="desc">Famous Cold War Allied crossing point</div>
+                            <div class="est-time">~30 min</div>
+                        </div>
                         <a class="map-link" href="https://www.google.com/maps/search/Checkpoint+Charlie+Berlin" target="_blank">Map</a>
                     </li>
                     <li>
-                        <span>Tr&auml;nenpalast</span>
+                        <div>
+                            <span>Tr&auml;nenpalast</span>
+                            <div class="desc">Border crossing hall, 'Palace of Tears'</div>
+                            <div class="est-time">~1 hr</div>
+                        </div>
                         <a class="map-link" href="https://www.google.com/maps/search/Tr%C3%A4nenpalast+Berlin" target="_blank">Map</a>
-                    </li>
-                    <li>
-                        <span>East Side Gallery</span>
-                        <a class="map-link" href="https://www.google.com/maps/search/East+Side+Gallery+Berlin" target="_blank">Map</a>
                     </li>
                 </ul>
             </div>
@@ -468,6 +599,7 @@
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/search/Rocoto+Berlin" target="_blank">Map</a>
             </div>
+            <a class="full-route" href="https://www.google.com/maps/dir/Berlin+Wall+Memorial/Mauerpark+Berlin/Bornholmer+Stra%C3%9Fe+Berlin/East+Side+Gallery+Berlin/Checkpoint+Charlie+Berlin/Tr%C3%A4nenpalast+Berlin" target="_blank">Open full route in Google Maps</a>
         </div>
     </div>
 
@@ -479,7 +611,10 @@
                 <div class="block-label">Morning / Early Afternoon</div>
                 <ul>
                     <li>
-                        <span><a href="https://www.berliner-unterwelten.de/en/" target="_blank">Berliner Unterwelten tour</a> &mdash; Dark Worlds recommended</span>
+                        <div>
+                            <span><a href="https://www.berliner-unterwelten.de/en/" target="_blank">Berliner Unterwelten tour</a> &mdash; Dark Worlds recommended</span>
+                            <div class="est-time">~1.5 hrs</div>
+                        </div>
                         <a class="map-link" href="https://www.google.com/maps/search/Berliner+Unterwelten+Berlin" target="_blank">Map</a>
                     </li>
                 </ul>
@@ -493,8 +628,9 @@
             </div>
             <div class="optional">
                 <div class="optional-content">
-                    <div class="optional-label">Optional</div>
+                    <div class="optional-label"><span class="optional-badge">Optional</span></div>
                     <a href="https://www.berlinstory.de/en/" target="_blank">Berlin Story Bunker</a>
+                    <div class="est-time">~1.5 hrs</div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/search/Berlin+Story+Bunker" target="_blank">Map</a>
             </div>
@@ -502,11 +638,17 @@
                 <div class="block-label">Afternoon Options</div>
                 <ul>
                     <li>
-                        <span>Tempelhofer Feld <span class="note">(sunset is best)</span></span>
+                        <div>
+                            <span>Tempelhofer Feld <span class="note">(sunset is best)</span></span>
+                            <div class="est-time">~1.5 hrs</div>
+                        </div>
                         <a class="map-link" href="https://www.google.com/maps/search/Tempelhofer+Feld+Berlin" target="_blank">Map</a>
                     </li>
                     <li>
-                        <span>Kreuzberg / Neuk&ouml;lln</span>
+                        <div>
+                            <span>Kreuzberg / Neuk&ouml;lln</span>
+                            <div class="est-time">~2 hrs</div>
+                        </div>
                         <a class="map-link" href="https://www.google.com/maps/search/Kreuzberg+Berlin" target="_blank">Map</a>
                     </li>
                 </ul>
@@ -518,6 +660,7 @@
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/search/Paolo+Pinkel+Berlin" target="_blank">Map</a>
             </div>
+            <a class="full-route" href="https://www.google.com/maps/dir/Berliner+Unterwelten+Berlin/Kin+Za+Georgian+Kitchen+Berlin/Tempelhofer+Feld+Berlin" target="_blank">Open full route in Google Maps</a>
         </div>
     </div>
 
@@ -529,15 +672,20 @@
                 <div class="block-label">Morning</div>
                 <ul>
                     <li>
-                        <span>Charlottenburg Palace + gardens</span>
+                        <div>
+                            <span>Charlottenburg Palace + gardens</span>
+                            <div class="desc">Largest palace in Berlin, baroque gardens</div>
+                            <div class="est-time">~2 hrs</div>
+                        </div>
                         <a class="map-link" href="https://www.google.com/maps/search/Charlottenburg+Palace+Berlin" target="_blank">Map</a>
                     </li>
                 </ul>
             </div>
             <div class="optional">
                 <div class="optional-content">
-                    <div class="optional-label">If time allows</div>
+                    <div class="optional-label"><span class="optional-badge">Optional</span> If time allows</div>
                     Karl-Marx-Allee or a quick museum
+                    <div class="est-time">~1 hr</div>
                 </div>
                 <a class="map-link" href="https://www.google.com/maps/search/Karl-Marx-Allee+Berlin" target="_blank">Map</a>
             </div>
@@ -547,6 +695,7 @@
                     <li><span>Leave at 17:00</span></li>
                 </ul>
             </div>
+            <a class="full-route" href="https://www.google.com/maps/dir/Charlottenburg+Palace+Berlin/Karl-Marx-Allee+Berlin" target="_blank">Open full route in Google Maps</a>
         </div>
     </div>
 
